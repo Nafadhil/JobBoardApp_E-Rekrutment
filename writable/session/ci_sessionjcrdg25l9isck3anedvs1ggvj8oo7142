@@ -1,0 +1,10 @@
+__ci_last_regenerate|i:1684053509;_ci_previous_url|s:40:"http://localhost:8080/index.php/register";jobs|N;error|s:308:"<!-- DEBUG-VIEW START 1 SYSTEMPATH\Validation\Views\list.php -->
+	<div class="errors" role="alert">
+		<ul>
+					<li>The address field is required.</li>
+					<li>The password2 field does not match the password field.</li>
+				</ul>
+	</div>
+
+<!-- DEBUG-VIEW ENDED 1 SYSTEMPATH\Validation\Views\list.php -->
+";__ci_vars|a:3:{s:5:"error";s:3:"old";s:13:"_ci_old_input";s:3:"old";s:21:"_ci_validation_errors";s:3:"old";}_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:4:{s:4:"name";s:2:"nn";s:5:"email";s:12:"nn@gmail.com";s:8:"password";s:2:"nn";s:9:"password2";s:1:"a";}}_ci_validation_errors|a:2:{s:7:"address";s:30:"The address field is required.";s:9:"password2";s:54:"The password2 field does not match the password field.";}
