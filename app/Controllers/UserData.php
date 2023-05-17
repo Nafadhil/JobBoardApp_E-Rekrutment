@@ -7,21 +7,20 @@ use App\Models\UserDataModel;
 
 class UserData extends BaseController
 {
-	protected $berkas;
+	protected $userdataModel;
 
 	public function __construct()
 	{
-		$this->berkas = new UserDataModel();
+		$this->userdataModel = new UserDataModel();
 	}
 	public function index()
 	{
-		$berkas = new UserDataModel();
-		$berkas = $this->berkas->paginate(2, 'userdata');
+		$userdata = $this->userdataModel->paginate(2, 'userdata');
 
 		$data = [
 			'tittle' => "Users Data | E-Rekrutmen",
-			'berkas' => $berkas,
-			"pager" => $this->berkas->pager
+			'userdata' => $userdata,
+			"pager" => $this->userdataModel->pager
 		];
 
 		//$data['berkas'] = $berkas->findAll();
@@ -30,11 +29,7 @@ class UserData extends BaseController
 
 	public function create($id = null)
 	{
-		$data = [
-			'tittle' => "Job Apply | E-Rekrutmen",
-			'berkas' => $this->berkas->getUserData($id)
-		];
-		return view('/form_upload', $data);
+		return view('/form_upload');
 	}
 
 	public function save()
@@ -53,17 +48,17 @@ class UserData extends BaseController
 						'required' => '{field} Tidak boleh kosong'
 					]
 				],
-				'keterangan' => [
+				'position' => [
 					'rules' => 'required',
 					'errors' => [
 						'required' => '{field} Tidak boleh kosong'
 					]
 				],
-				'berkas' => [
-					'rules' => 'uploaded[berkas]|mime_in[berkas,image/jpg,image/jpeg,image/gif,image/png,application/pdf]|max_size[berkas,2048]',
+				'file' => [
+					'rules' => 'uploaded[file]|mime_in[file,application/pdf]|max_size[file,2048]',
 					'errors' => [
 						'uploaded' => 'Harus Ada File yang diupload',
-						'mime_in' => 'File Extention Harus Berupa jpg,jpeg,gif,png',
+						'mime_in' => 'File Extension Harus Berupa PDF',
 						'max_size' => 'Ukuran File Maksimal 2 MB'
 					]
 				]
@@ -73,30 +68,41 @@ class UserData extends BaseController
 			return redirect()->back()->withInput();
 		}
 
-		$berkas = new UserDataModel();
-		$dataBerkas = $this->request->getFile('berkas');
-		$fileName = $dataBerkas->getRandomName();
-		$berkas->insert([
+		$userdata = $this->userdataModel;
+		$dataUser = $this->request->getFile('file');
+		$fileName = $dataUser->getRandomName();
+		$userdata->insert([
 			'name' => $this->request->getPost('name'),
 			'address' => $this->request->getPost('address'),
 			'file' => $fileName,
-			'position' => $this->request->getPost('keterangan')
+			'position' => $this->request->getPost('position')
 		]);
-		$dataBerkas->move('uploads/berkas/', $fileName);
-		session()->setFlashdata('success', 'Berkas Berhasil diupload');
+		$dataUser->move('uploads/file/', $fileName);
+		session()->setFlashdata('success', 'Data Berhasil diupload');
 		return redirect()->to(base_url('/'));
 	}
 
 	function download($id)
 	{
-		$berkas = new UserDataModel();
-		$data = $berkas->find($id);
-		return $this->response->download('uploads/berkas/' . $data->file, null);
+		$userdata = $this->userdataModel;
+		$data = $userdata->find($id);
+		return $this->response->download('uploads/file/' . $data->file, null);
 	}
 
 	public function delete($id)
 	{
-		$this->berkas->delete($id);
+		$userdata = $this->userdataModel;
+		$data = $userdata->find($id);
+
+		// Hapus file
+		$file_path = 'uploads/file/' . $data->file;
+		if (file_exists($file_path)) {
+			unlink($file_path);
+		}
+
+		// Hapus data dari database
+		$this->userdataModel->delete($id);
+
 		return redirect()->to('/berkas');
 	}
 }

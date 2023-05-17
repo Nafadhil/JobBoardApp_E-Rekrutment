@@ -3,13 +3,13 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Blank Page</h1>
+            <h1>APPLY</h1>
         </div>
 
         <div class="section-body">
             <div class="card">
                 <div class="card-header">
-                    <h4>Blank Page</h4>
+                    <h4>Form Apply</h4>
                 </div>
                 <div class="card-body">
                     <div class="card-body table-responsivey">
@@ -33,13 +33,15 @@
                                     value="<?= old('address'); ?>" style="height: 100px; vertical-align: top;">
                             </div>
                             <div class="mb-3">
-                                <label for="berkas" class="form-label">Berkas</label>
-                                <input type="file" class="form-control" id="berkas" name="berkas">
+                                <label for="file" class="form-label">CV</label>
+                                <input type="file" class="form-control" id="file" name="file">
                             </div>
                             <div class="mb-3">
-                                <label for="keterangan" class="form-label">Keterangan</label>
-                                <textarea class="form-control" id="keterangan" name="keterangan" rows="3"></textarea>
+                                <label for="position" class="form-label">Position</label>
+                                <input type="text" class="form-control" id="position" name="position" rows="3" readonly
+                                    value="<?= $job['position'] ?>">
                             </div>
+
                             <div class="mb-3">
                                 <input type="submit" class="btn btn-info" value="Upload" />
                             </div>

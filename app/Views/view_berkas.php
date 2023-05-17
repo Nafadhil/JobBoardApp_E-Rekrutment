@@ -3,7 +3,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Blank Page</h1>
+            <h1>Job Applicant</h1>
         </div>
         <div class="section-body">
             <div class="card">
@@ -27,7 +27,7 @@
                             </tr>
                             <?php
                             $i = 1;
-                            foreach ($berkas as $row):
+                            foreach ($userdata as $row):
                                 ?>
                                 <tr>
                                     <td>

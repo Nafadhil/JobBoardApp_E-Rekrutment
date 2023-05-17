@@ -3,7 +3,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>Blank Page</h1>
+            <h1>Job List</h1>
         </div>
 
         <div class="section-body">
@@ -39,7 +39,7 @@
                                     <td>
                                         <?= $j['end_date']; ?>
                                     </td>
-                                    <td><a href="/berkas/create" class="badge badge-success">Detail</a></td>
+                                    <td><a href="/apply/<?= $j['id'] ?>" class="badge badge-success">Apply</a></td>
                                     <td>
                                         <a href="/job/<?= $j['id'] ?>/edit" class="btn btn-warning btn-sm"><i
                                                 class="fas fa-pencil-alt"></i></a>

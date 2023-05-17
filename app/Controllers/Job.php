@@ -47,6 +47,16 @@ class Job extends BaseController
         //
     }
 
+    public function apply($id = null)
+    {
+        $job = $this->jobModel->find($id);
+        $data = [
+            'tittle' => "Apply Job | E-Rekrutmen",
+            'job' => $job
+        ];
+
+        return view('form_upload', $data);
+    }
     /**
      * Return a new resource object, with default properties
      *
