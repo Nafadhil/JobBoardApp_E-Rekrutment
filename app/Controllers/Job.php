@@ -32,8 +32,7 @@ class Job extends BaseController
             "pager" => $this->jobModel->pager
         ];
 
-
-        return view('job', $data);
+        return view('jobs/index', $data);
     }
 
     /**
@@ -55,7 +54,7 @@ class Job extends BaseController
             'job' => $job
         ];
 
-        return view('form_upload', $data);
+        return view('/userdata/apply', $data);
     }
     /**
      * Return a new resource object, with default properties
@@ -68,7 +67,7 @@ class Job extends BaseController
             'tittle' => "Add Job | E-Rekrutmen"
         ];
 
-        return view('/job_upload', $data);
+        return view('jobs/upload', $data);
     }
 
     /**
@@ -85,7 +84,7 @@ class Job extends BaseController
         ];
 
         $this->jobModel->insert($data);
-        return redirect()->to('/job');
+        return redirect()->to('/jobs/index');
     }
 
     /**
@@ -99,7 +98,8 @@ class Job extends BaseController
             'tittle' => "Edit Job | E-Rekrutmen",
             'job' => $this->jobModel->getJob($id)
         ];
-        echo view('/job_edit', $data);
+        echo view('/jobs/edit', $data);
+
     }
 
     /**
@@ -117,7 +117,7 @@ class Job extends BaseController
 
         $this->jobModel->update($id, $data);
 
-        return redirect()->to('/job');
+        return redirect()->to('/jobs/index');
     }
 
     /**
@@ -128,7 +128,7 @@ class Job extends BaseController
     public function delete($id)
     {
         $this->jobModel->delete($id);
-        return redirect()->to('/job');
+        return redirect()->to('/jobs/index');
     }
 
 }
