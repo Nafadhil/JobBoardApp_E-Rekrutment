@@ -34,7 +34,7 @@
             <li><a class="nav-link" href="/job"><i class="fas fa-th"></i> <span>Job List</span></a></li>
 
             <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-                <a href="https://instagram.com/haloedrink?igshid=NTc4MTIwNjQ2YQ==" class="btn btn-primary btn-lg btn-block btn-icon-split">
+                <a href="https://www.instagram.com/offcialfoodymoody/" class="btn btn-primary btn-lg btn-block btn-icon-split">
                     <i class="fab fa-instagram"></i> Official Instagram
                 </a>
             </div>
