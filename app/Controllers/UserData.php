@@ -79,7 +79,7 @@ class UserData extends BaseController
         ]);
         $dataUser->move('uploads/file/', $fileName);
         session()->setFlashdata('success', 'Data Berhasil diupload');
-        return redirect()->to(base_url('/'));
+        return redirect()->to(base_url('/job'));
     }
 
     function download($id)

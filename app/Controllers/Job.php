@@ -84,7 +84,7 @@ class Job extends BaseController
         ];
 
         $this->jobModel->insert($data);
-        return redirect()->to('/jobs/index');
+        return redirect()->to('/job');
     }
 
     /**
@@ -117,7 +117,7 @@ class Job extends BaseController
 
         $this->jobModel->update($id, $data);
 
-        return redirect()->to('/jobs/index');
+        return redirect()->to('/job');
     }
 
     /**
@@ -128,7 +128,7 @@ class Job extends BaseController
     public function delete($id)
     {
         $this->jobModel->delete($id);
-        return redirect()->to('/jobs/index');
+        return redirect()->to('/job');
     }
 
 }

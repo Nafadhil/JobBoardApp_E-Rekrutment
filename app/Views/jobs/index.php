@@ -12,13 +12,18 @@
                     <a href="<?= base_url(); ?>/job/upload" class="btn btn-primary">Add</a>
                 </div>
                 <div class="card-body table-responsive">
+                    <?php if (!empty(session()->getFlashdata('success'))): ?>
+                        <div class="alert alert-success" role="alert">
+                            <?php echo session()->getFlashdata('success'); ?>
+                        </div>
+                    <?php endif; ?>
                     <table class="table table-striped table-md">
                         <tbody>
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
                                 <th>Position</th>
                                 <th>Location</th>
-                                <th>End Date</th>
+                                <th>Created Date</th>
                                 <th>Action User</th>
                                 <th>Action Admin</th>
                             </tr>

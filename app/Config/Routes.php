@@ -48,7 +48,6 @@ $routes->group('', ['filter' => 'authMiddleware'], function ($routes) {
     $routes->get('/berkas', 'UserData::index');
     $routes->get('/apply/(:segment)', 'Job::apply/$1');
     $routes->get('/berkas/download/(:num)', 'UserData::download/$1');
-    $routes->get('/job', 'Job::index');
     $routes->get('/job/upload', 'Job::create');
     $routes->post('/job/save', 'Job::save');
     $routes->post('/job/update/(:segment)', 'Job::update/$1');

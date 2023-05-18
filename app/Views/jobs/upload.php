@@ -26,7 +26,7 @@
                                     value="<?= old('location'); ?>" style="height: 100px; vertical-align: top;">
                             </div>
                             <div class="mb-3">
-                                <label for="end_date" class="form-label">End Date</label>
+                                <label for="end_date" class="form-label">Created Date</label>
                                 <textarea class="form-control" id="end_date"
                                     name="end_date"><?= old('end_date'); ?></textarea>
                             </div>

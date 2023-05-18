@@ -26,19 +26,16 @@
         <ul class="sidebar-menu">
             <li class="menu-header">Main Menu</li>
             <li>
-                <a href="/" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
+                <a href="/" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a>
             </li>
             <li>
                 <a href="/berkas" class="nav-link"><i class="fas fa-columns"></i> <span>Job Applicant</span></a>
             </li>
-            <li><a class="nav-link" href="/job"><i class="far fa-square"></i> <span>Job List</span></a></li>
-            <li>
-                <a href="#" class="nav-link"><i class="fas fa-th"></i> <span>Bootstrap</span></a>
-            </li>
+            <li><a class="nav-link" href="/job"><i class="fas fa-th"></i> <span>Job List</span></a></li>
 
             <div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-                <a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
-                    <i class="fas fa-rocket"></i> Documentation
+                <a href="https://instagram.com/haloedrink?igshid=NTc4MTIwNjQ2YQ==" class="btn btn-primary btn-lg btn-block btn-icon-split">
+                    <i class="fab fa-instagram"></i> Official Instagram
                 </a>
             </div>
     </aside>
