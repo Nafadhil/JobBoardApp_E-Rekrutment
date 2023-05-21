@@ -13,6 +13,13 @@
                 </div>
                 <div class="card-body">
                     <div class="card-body table-responsivey">
+                        <?php if (!empty(session()->getFlashdata('error'))): ?>
+                            <div class="alert alert-danger" role="alert">
+                                <h4>Periksa Entrian Form</h4>
+                                </hr />
+                                <?php echo session()->getFlashdata('error'); ?>
+                            </div>
+                        <?php endif; ?>
                         <form method="post" action="<?= base_url(); ?>/job/save" enctype="multipart/form-data">
                             <?= csrf_field(); ?>
                             <div class="mb-3">
@@ -26,9 +33,9 @@
                                     value="<?= old('location'); ?>" style="height: 100px; vertical-align: top;">
                             </div>
                             <div class="mb-3">
-                                <label for="end_date" class="form-label">Created Date</label>
-                                <textarea class="form-control" id="end_date"
-                                    name="end_date"><?= old('end_date'); ?></textarea>
+                                <label for="created_date" class="form-label">Created Date</label>
+                                <textarea class="form-control" id="created_date"
+                                    name="created_date"><?= old('created_date'); ?></textarea>
                             </div>
                             <div class="mb-3">
                                 <input type="submit" class="btn btn-info" value="Upload" />

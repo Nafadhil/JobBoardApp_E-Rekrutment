@@ -8,6 +8,7 @@ use App\Models\UserModel;
 class Login extends ResourceController
 {
     protected $session;
+    protected $userModel;
 
     public function __construct()
     {
@@ -74,6 +75,7 @@ class Login extends ResourceController
         $this->session->set('id', $user['id']);
         $this->session->set('name', $user['name']);
         $this->session->set('loggedIn', true);
+        $this->session->set('role', $user['role']);
 
         return redirect()->to('/');
     }

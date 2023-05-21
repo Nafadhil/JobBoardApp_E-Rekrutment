@@ -12,6 +12,7 @@ class Logout extends BaseController
         $session->remove('id');
         $session->remove('name');
         $session->remove('loggedIn');
+        $session->remove('role');
 
         $session->setFlashdata('success', 'Successfully logout!');
 

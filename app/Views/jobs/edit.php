@@ -32,7 +32,7 @@
                                     value="<?= $job['end_date'] ?>" style="height: 50px;">
                             </div>
                             <div class="mb-3">
-                                <input type="submit" class="btn btn-info" value="Upload" />
+                                <input type="submit" class="btn btn-info" value="Edit" />
                             </div>
                         </form>
                     </div>

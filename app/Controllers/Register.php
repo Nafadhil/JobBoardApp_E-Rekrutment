@@ -8,6 +8,7 @@ use App\Models\UserModel;
 class Register extends ResourceController
 {
     protected $session;
+    protected $userModel;
 
     public function __construct()
     {

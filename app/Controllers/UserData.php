@@ -23,35 +23,33 @@ class UserData extends BaseController
             "pager" => $this->userdataModel->pager
         ];
 
-        //$data['berkas'] = $berkas->findAll();
         return view('userdata/index', $data);
-    }
-
-    public function create($id = null)
-    {
-        return view('userdata/apply');
     }
 
     public function save()
     {
+        if (session()->get('role') != 2) {
+            return redirect()->to('/');
+        }
+
         if (
             !$this->validate([
                 'name' => [
                     'rules' => 'required',
                     'errors' => [
-                        'required' => '{field} Tidak boleh kosong'
+                        'required' => 'Name Tidak boleh kosong'
                     ]
                 ],
                 'address' => [
                     'rules' => 'required',
                     'errors' => [
-                        'required' => '{field} Tidak boleh kosong'
+                        'required' => 'Address Tidak boleh kosong'
                     ]
                 ],
                 'position' => [
                     'rules' => 'required',
                     'errors' => [
-                        'required' => '{field} Tidak boleh kosong'
+                        'required' => 'Position Tidak boleh kosong'
                     ]
                 ],
                 'file' => [
@@ -84,6 +82,10 @@ class UserData extends BaseController
 
     function download($id)
     {
+        if (session()->get('role') != 1) {
+            return redirect()->to('/');
+        }
+
         $userdata = $this->userdataModel;
         $data = $userdata->find($id);
         return $this->response->download('uploads/file/' . $data->file, null);
@@ -91,6 +93,10 @@ class UserData extends BaseController
 
     public function delete($id)
     {
+        if (session()->get('role') != 1) {
+            return redirect()->to('/');
+        }
+
         $userdata = $this->userdataModel;
         $data = $userdata->find($id);
 

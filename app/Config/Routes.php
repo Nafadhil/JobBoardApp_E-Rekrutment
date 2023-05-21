@@ -30,14 +30,6 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-
-// $routes->get('/', 'Home::index');
-// $routes->get('/uplod', 'UserData::create');
-// $routes->post('/berkas/save', 'UserData::save');
-// $routes->get('/berkas', 'UserData::index');
-// $routes->get('/berkas/create', 'UserData::create');
-// $routes->get('/berkas/download/(:num)', 'UserData::download/$1');
-// $routes->get('/job', 'Job::index');
 $routes->resource('register');
 $routes->resource('login');
 $routes->resource('logout');
@@ -54,15 +46,6 @@ $routes->group('', ['filter' => 'authMiddleware'], function ($routes) {
     $routes->resource('job');
     $routes->resource('userdata');
 });
-// $routes->get('/job/upload', 'Job::create');
-// $routes->post('/job/save', 'Job::save');
-// $routes->post('/job/update/(:segment)', 'Job::update/$1');
-
-//$routes->delete('/berkas/(:segment)', 'UserData::delete/$1');
-
-
-
-
 
 /*
  * --------------------------------------------------------------------

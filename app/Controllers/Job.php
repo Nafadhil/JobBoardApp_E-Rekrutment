@@ -48,6 +48,9 @@ class Job extends BaseController
 
     public function apply($id = null)
     {
+        if (session()->get('role') != 2) {
+            return redirect()->to('/');
+        }
         $job = $this->jobModel->find($id);
         $data = [
             'tittle' => "Apply Job | E-Rekrutmen",
@@ -63,6 +66,11 @@ class Job extends BaseController
      */
     public function create()
     {
+        if (session()->get('role') != 1) {
+            return redirect()->to('/');
+        }
+
+
         $data = [
             'tittle' => "Add Job | E-Rekrutmen"
         ];
@@ -77,13 +85,42 @@ class Job extends BaseController
      */
     public function save()
     {
+        if (session()->get('role') != 1) {
+            return redirect()->to('/');
+        }
+        if (
+            !$this->validate([
+                'position' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Position Tidak boleh kosong'
+                    ]
+                ],
+                'location' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Location Tidak boleh kosong'
+                    ]
+                ],
+                'created_date' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Created Date Tidak boleh kosong'
+                    ]
+                ]
+            ])
+        ) {
+            session()->setFlashdata('error', $this->validator->listErrors());
+            return redirect()->back()->withInput();
+        }
+
         $data = [
             "position" => $this->request->getPost('position'),
             "location" => $this->request->getPost('location'),
-            "end_date" => $this->request->getPost('end_date')
+            "created_date" => $this->request->getPost('end_date')
         ];
-
         $this->jobModel->insert($data);
+        session()->setFlashdata('success', 'Data Berhasil diupload');
         return redirect()->to('/job');
     }
 
@@ -94,6 +131,9 @@ class Job extends BaseController
      */
     public function edit($id = null)
     {
+        if (session()->get('role') != 1) {
+            return redirect()->to('/');
+        }
         $data = [
             'tittle' => "Edit Job | E-Rekrutmen",
             'job' => $this->jobModel->getJob($id)
@@ -109,6 +149,9 @@ class Job extends BaseController
      */
     public function update($id)
     {
+        if (session()->get('role') != 1) {
+            return redirect()->to('/');
+        }
         $data = [
             "position" => $this->request->getPost('position'),
             "location" => $this->request->getPost('location'),
@@ -127,8 +170,10 @@ class Job extends BaseController
      */
     public function delete($id)
     {
+        if (session()->get('role') != 1) {
+            return redirect()->to('/');
+        }
         $this->jobModel->delete($id);
         return redirect()->to('/job');
     }
-
 }
